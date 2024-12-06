@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
+  baseUrl: "http://95.130.227.202:9090",
   firebase: {
     apiKey: "AIzaSyBAFC-URAbBDkMPsMlN8KRoGL_SSBLktwU",
     authDomain: "quiz-app-e66cc.firebaseapp.com",
