@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { AuthService } from 'src/app/demo/service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
 @Component({
@@ -21,15 +22,20 @@ export class LoginComponent {
 
     password!: string;
 
-    constructor(public layoutService: LayoutService, private fb: FormBuilder) {
+    constructor(public layoutService: LayoutService, private fb: FormBuilder,private authService: AuthService) {
         this.modelForm=this.createForm();
     }
     createForm(): FormGroup {
         return this.fb.group({
-            name: [],
-            surname: [],
-            password: [],
-            phone: []
+            email: [],
+            password: []
         });
+    }
+    register(){
+        this.authService.login(this.modelForm.get('email').value, this.modelForm.get('password').value).subscribe({
+            next: (a)=>{
+                console.log(a);
+            }
+        })
     }
 }

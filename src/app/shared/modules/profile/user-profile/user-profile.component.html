@@ -1,0 +1,56 @@
+<!-- <div class="card">
+    <div class="m-b-20">
+      <div class="contact-grid">
+        <div class="profile-header bg-success">
+          <div class="user-name">{{person?.firstName}} {{person?.lastName}}</div>
+          <div class="name-center">
+            <div class="d-flex justify-content-center gap-2">
+              <div *ngIf="isPatient">{{'PATIENT'|translate}},</div>
+              <div *ngIf="isDoctor">{{'DOCTOR'|translate}}</div>
+              <div *ngIf="isTenantAdmin">{{'TENANT_ADMIN'|translate}}</div>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="isImageSaved||imgBase64; else elseTemplate">
+          <img [src]="imgBase64" class="user-img" />
+        </ng-container>
+        <ng-template #elseTemplate>
+          <img style="cursor: pointer;" (click)="openFileFolder()" src="{{userContact?.imageName}}" class="user-img"
+            alt="" title="{{'CHANGE_IMAGE'|translate}}">
+        </ng-template>
+  
+        <div *ngIf="imageError" class="text-danger">
+          {{imageError}}
+        </div>
+        <div *ngIf="isImageSelected&&!isImageSaved">
+          <button (click)="saveImage()" class="btn btn-primary">{{'SAVE'|translate}}</button>
+        </div>
+        <input style="display: none;" type="file" #change_image (change)="onchangeImage($event.target.files)">
+        <div class="p-2">
+          <div class="d-flex gap-2 justify-content-between">
+            <div>
+              <strong>{{'USER_NAME'|translate}}</strong>: <span> {{userContact?.userName}}</span>
+            </div>
+          </div>
+          <div>
+            <div class="d-flex gap-2 justify-content-between">
+              <div>
+                <strong>{{'PHONE_NUMBER'|translate}}</strong>: <span> {{userContact?.phoneNumber}}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="d-flex gap-2 justify-content-between">
+              <div>
+                <strong>{{'EMAIL'|translate}}</strong>: {{userContact?.email}}
+              </div>
+            </div>
+  
+          </div>
+  
+        </div>
+      </div>
+    </div>
+    <div class="m-l-10 m-b-20 d-flex justify-content-center">
+    </div>
+  </div> -->
