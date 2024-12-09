@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/demo/service';
 import { LayoutService } from 'src/app/layout/service/app.layout.service';
 
@@ -22,7 +23,12 @@ export class LoginComponent {
 
     password!: string;
 
-    constructor(public layoutService: LayoutService, private fb: FormBuilder,private authService: AuthService) {
+    constructor(
+         public layoutService: LayoutService,
+         private fb: FormBuilder,
+         private authService: AuthService,
+         private router: Router
+        ) {
         this.modelForm=this.createForm();
     }
     createForm(): FormGroup {
@@ -34,8 +40,23 @@ export class LoginComponent {
     register(){
         this.authService.login(this.modelForm.get('email').value, this.modelForm.get('password').value).subscribe({
             next: (a)=>{
-                console.log(a);
+                this.authService.showNotification("Confirmation sended to your email! ");
+                // this.verifyEmail(this.modelForm.get('email').value);
+                this.router.navigateByUrl('/');
+            },error: (err)=>{
+                console.log(err);
+                this.authService.showNotification("Confirmation sended to your email! ");
             }
         })
+    }
+    private verifyEmail(email: string){
+        this.authService.verifyEmail(email).subscribe({
+            next: (a)=>{
+                // console.log(a);
+            },error: (err: Error)=>{
+
+            }
+        })
+
     }
 }
