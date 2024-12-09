@@ -14,7 +14,7 @@ export class RegisterComponent {
 
   valCheck: string[] = ['remember'];
 
-  password!: string;
+  password: string;
 
   constructor(
     public layoutService: LayoutService, 
@@ -29,12 +29,13 @@ export class RegisterComponent {
           name: [''],
           surname: [''],
           password: [''],
-          phone: ['']
+          email: ['']
       });
   }
   register(){
     this.authService.register(this.modelForm.value).subscribe({
       next: (a)=>{
+        this.authService.showCreateSuccess();
         this.router.navigateByUrl('/auth/login');
       },
       error: (err:Error)=>{
